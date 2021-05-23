@@ -1,12 +1,12 @@
-var router = require('express').Router();
-var Game = require('../db').import('../models/game');
+const router = require('express').Router();
+const {Game} = require('../db');//var Game = require('../db').import('../models/game');
 
 router.get('/all', (req, res) => {
-    Game.findAll({ where: { owner_id: req.user.id } })
+    Game.findAll({ where: { owner_id: req.body.user.id } }) //Game.findAll({ where: { owner_id: req.user.id } })
         .then(
             function findSuccess(data) {
                 res.status(200).json({
-                    games: games,
+                    games: data, // games: games,
                     message: "Data fetched."
                 })
             },
@@ -70,7 +70,7 @@ router.put('/update/:id', (req, res) => {
         {
             where: {
                 id: req.params.id,
-                owner_id: req.user
+                owner_id: req.body.user.id //owner_id: req.user
             }
         })
         .then(
@@ -94,7 +94,7 @@ router.delete('/remove/:id', (req, res) => {
     Game.destroy({
         where: {
             id: req.params.id,
-            owner_id: req.user.id
+            owner_id: req.body.user.id
         }
     })
     .then(
@@ -113,4 +113,4 @@ router.delete('/remove/:id', (req, res) => {
     )
 })
 
-module.exports = routers;
+module.exports = router; //module.exports = router;
