@@ -23,8 +23,16 @@
 
 4.<can't connect to db(uncorect port )>. <add field port 5433 > Добавлены(ы) строка(и) <10> в файле <./db.js>.
 
-5.<uncorrect values of fields rec.body.user... >. <change to rec.body...> Добавлены(ы) строка(и) <9-12,30,32> в файле <./controllers/usercontroller.js>.
+5.<uncorrect name of field passwordhash>. <change to passwordHash> Исправлена(ы) строка(и) <11> в файле <./controllers/usercontroller.js>.
 
-6.<uncorrect name of field passwordhash>. <change to passwordHash> Добавлены(ы) строка(и) <11> в файле <./controllers/usercontroller.js>.
-7.<uncorrect method (post) to /signin>. <change to get> Добавлены(ы) строка(и) <29> в файле <./controllers/usercontroller.js>.
 
+6.<miss body in (where: { owner_id: req.user.id })>. <change to (where: { owner_id: req.body.user.id })> Исправлена(ы) строка(и) <5> в файле <./controllers/gamecontroller.js>.
+
+7.<uncorrect value of field games>. <change to games: data,> Исправлена(ы) строка(и) <9> в файле <./controllers/gamecontroller.js>.
+
+8.<uncorrect value of field owner_id >. <change to owner_id: req.body.game.id> Исправлена(ы) строка(и) <73> в файле <./controllers/gamecontroller.js>.
+
+Рефактор кода
+
+1.var --> const
+2.<change method (post) to get> Исправлена(ы) строка(и) <29> в файле <./controllers/usercontroller.js>.
